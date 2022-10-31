@@ -10,7 +10,7 @@ namespace Company.Function
     {
         [FunctionName("QueueTrigger2")]
         public void Run([QueueTrigger("myqueue-items", Connection = "southcentralqueue_STORAGE")]string myQueueItem, 
-        [Blob("outcontainer/{rand-guid}", FileAccess.Write, Connection="southcentralqueue_STORAGE")] out string myBlob1, ILogger log)
+        [Blob("outcontainer/out.txt", FileAccess.Write, Connection="southcentralqueue_STORAGE")] out string myBlob1, ILogger log)
         {
             myBlob1 = myQueueItem;
             log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
